@@ -24,9 +24,10 @@ public class Assignment {
   private double earnedGrade;
   private double fullGrade;
   private String letterGrade;
-  
+
   // For putting in everything all at once
 
+  // * Constructors
   /**
    * Constructor for the Assignment Class including everything
    * @param t Title of the assignment
@@ -93,7 +94,7 @@ public class Assignment {
     }
   }
 
-  // Getters are in the following
+  // * Getters are in the following
   /**
    *
    * @return Returns the Assignments' full grade
@@ -167,7 +168,7 @@ public class Assignment {
 
   /**
    * Finds the percentage and returns it as a String that is truncated
-   * @return Returns the percantage in a string formate
+   * @return Returns the percantage in a string format
    */
   public String findPercentage() {
     if (this.earnedGrade<0) {
@@ -175,14 +176,14 @@ public class Assignment {
     } else {
       //Does the math to convert the double percentage into a string.
       String unfilteredPercentage = String.valueOf((this.earnedGrade/this.fullGrade)*10);
-      //Truncates it back fron all of the decimals
+      //Truncates it back from all of the decimals
       return unfilteredPercentage.substring(0, unfilteredPercentage.indexOf("."+1));
     }
     
   }
   
   public String toString() {
-    return "|\tAssignment Name: " + this.title + "\t|\t Grade: " + this.letterGrade +this.findPercentage()+"\t|";
+    return "|\tAssignment Name: " + this.title + "\t|\t Grade: " + this.letterGrade +this.findPercentage()+"\t|\n";
   }
 
   public String colored_toString() {

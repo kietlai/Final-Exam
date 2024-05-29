@@ -18,13 +18,13 @@
 // - Assignments/Tests, use a or 3d/2d array maybe a new object class?
 
 // Student
-// - Assignments, reference?
+// - Assignments, reference?DQRD
 // - Age
-// - Graduation Reqs
+// - Graduation Reqsd
 
-// Assignment Groups
+// Assignment GroupsDQR
 // - Group Name
-// - Assignment Weight
+// - Assignment Weight2
 
 // Assignments
 // - Title
@@ -34,6 +34,19 @@
 
 public class App {
   public static void main(String[] args) throws Exception {
-    
+
+    String[] studentNames = {"John", "Jim", "Tim", "Jeff", "Ying"};
+    Class compsci = new Class("AP Computer Science A", "Steven Chastain", "An AP class that teaches primarly java and helps to introduce the ideas of Object Oriented Programming", studentNames);
+    compsci.newAssignment("DQR 1", 10);
+    compsci.newAssignment("DQR 2", 24);
+
+
+    //compsci.getAssignment();
+
+    compsci.getAssignment().editGradeEarnedPoints();
+    System.out.println(compsci.getAssignment());
+
+
+
   }
 }
