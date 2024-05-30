@@ -35,7 +35,9 @@
 public class App {
   public static void main(String[] args) throws Exception {
 
-    String[] studentNames = {"John", "Jim", "Tim", "Jeff", "Ying"};
+    //, "Jim", "Tim", "Jeff", "Ying"
+
+    String[] studentNames = {"John"};
     Class compsci = new Class("AP Computer Science A", "Steven Chastain", "An AP class that teaches primarly java and helps to introduce the ideas of Object Oriented Programming", studentNames);
     compsci.newAssignment("DQR 1", 10);
     compsci.newAssignment("DQR 2", 24);
@@ -43,8 +45,9 @@ public class App {
 
     //compsci.getAssignment();
 
-    compsci.getAssignment().editGradeEarnedPoints();
-    System.out.println(compsci.getAssignment());
+    //compsci.getAssignment().editGradeEarnedPoints();
+    compsci.getAssignment().editGrade("John", 3);
+    System.out.println(compsci.getAssignment().getStudentWork().get("John").findPercentage());
 
 
 

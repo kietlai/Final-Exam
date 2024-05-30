@@ -56,6 +56,14 @@ public class AssignmentGroup {
   // * Getters
 
   /**
+   * Returns the hashmap of all the students
+   * @return Hashmap of all of teh students
+   */
+  public HashMap<String, Assignment> getStudentWork() {
+    return studentWork;
+  }
+
+  /**
    * Assignment name
    * @return gets the assignment name
    */
@@ -98,12 +106,12 @@ public class AssignmentGroup {
   // * Setters
 
   /**
-   * Changes the title for the assignment group itself and all of the elements within it.
+   * Changes the title for the assignment group itself and all the elements within it.
    * @param nTitle The new title for the assignment.
    */
   public void newTitle(String nTitle) {
     this.assignmentName = nTitle;
-    // Loops through and fixes all of the assignment names. 
+    // Loops through and fixes all the assignment names.
     for (String name: studentWork.keySet()) {
       this.studentWork.get(name).setTitle(nTitle);
       
@@ -111,7 +119,7 @@ public class AssignmentGroup {
   }
 
   /**
-   * Changes full grade for itself and all of the elements that are within it
+   * Changes full grade for itself and all the elements that are within it
    * @param newFullGrade the new full grade
    */
   public void changeFullGrade(int newFullGrade) {
@@ -139,7 +147,7 @@ public class AssignmentGroup {
   }
 
   /**
-   * Used to edit all of the grades in the group.
+   * Used to edit all the grades in the group.
    */
   public void editGradeEarnedPoints() {
     Scanner scan = new Scanner(System.in);

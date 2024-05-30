@@ -173,13 +173,8 @@ public class Assignment {
   public String findPercentage() {
     if (this.earnedGrade<0) {
       return "N/A";
-    } else {
-      //Does the math to convert the double percentage into a string.
-      String unfilteredPercentage = String.valueOf((this.earnedGrade/this.fullGrade)*10);
-      //Truncates it back from all of the decimals
-      return unfilteredPercentage.substring(0, unfilteredPercentage.indexOf("."+1));
     }
-    
+    return String.valueOf((this.earnedGrade/this.fullGrade)*100+0.00000001).substring(0,5)+"%";
   }
   
   public String toString() {
