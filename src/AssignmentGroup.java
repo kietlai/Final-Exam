@@ -91,7 +91,7 @@ public class AssignmentGroup {
     for(String name: this.studentWork.keySet()) {
       if (!this.studentWork.get(name).findPercentage().equals("N/A")){
         count++; 
-        total+=Double.parseDouble(this.studentWork.get(name).findPercentage());
+        total+=Double.parseDouble(this.studentWork.get(name).findPercentage().substring(0,this.studentWork.get(name).findPercentage().indexOf("%")));
       }
     }
     //Checks if no one has grades
@@ -135,15 +135,35 @@ public class AssignmentGroup {
    */
   public void addStudent(String studentName) {
     this.studentWork.put(studentName, new Assignment(this.assignmentName, this.fullGrade));
+    System.out.println("Do you want to edit "+ studentName + "'s grade? (Y/N)");
+    Scanner sc = new Scanner(System.in);
+    String res = sc.nextLine();
+
+    if (res.equalsIgnoreCase("Y")) {
+      this.editGrade(studentName);
+
+    }
+
   }
 
   /**
    * Sets the earned grade for each student
    * @param name name of the student to be edited
-   * @param nEarnedGrade the grade that they earned
    */
-  public void editGrade(String name, double nEarnedGrade) {
-    this.studentWork.get(name).setEarnedGrade(nEarnedGrade);
+  public void editGrade(String name) {
+    Scanner scan = new Scanner(System.in);
+    System.out.println("What will the earned grade be?");
+
+    // Scans for the new graded assignment
+    String studentGrade = scan.nextLine();
+
+    this.gradeChangeSelector(name, studentGrade);
+
+    //Prints the updated score
+    System.out.print(name + " updated score is: " + this.studentWork.get(name).getEarnedGrade() + " out of " +this.studentWork.get(name).getFullGrade());
+
+    System.out.println("|  "+this.studentWork.get(name).getLetterGrade()+" "+this.studentWork.get(name).findPercentage()+"\n");
+
   }
 
   /**
@@ -154,7 +174,6 @@ public class AssignmentGroup {
 
     //Loops through the list of assignments and then asks for each grade
     for (String name: this.studentWork.keySet()) {
-      System.out.println(name);
       double curGrade = this.studentWork.get(name).getEarnedGrade();
       String wa = this.studentWork.get(name).toString();
 
@@ -164,12 +183,11 @@ public class AssignmentGroup {
         fixedCurGrade = "N/A";
       }
       
-      
       System.out.println("You can do both certain grade earned or percentage? Denote percentage with the percentage following the number (i.e 96%)\n");
       
 
       //lets the teacher now what there current grade is
-      System.out.println("Edit the grade of " + name + " Current earned grade is " + fixedCurGrade + " out of " + fullGrade);
+      System.out.println("Edit the grade of " + name + " | Current earned grade is " + fixedCurGrade + " out of " + fullGrade);
       System.out.println("What will the earned grade be?");
 
       // Scans for the new graded assignment
@@ -178,13 +196,13 @@ public class AssignmentGroup {
       this.gradeChangeSelector(name, studentGrade);
 
       //Prints the updated score
-      System.out.println(name + " updated score is: ");
-      
-      
+      System.out.print(name + " updated score is: " + this.studentWork.get(name).getEarnedGrade() + " out of " +this.studentWork.get(name).getFullGrade());
+
+      System.out.println("|  "+this.studentWork.get(name).getLetterGrade()+" "+this.studentWork.get(name).findPercentage()+"\n");
+
     }
     
   }
-
   
   // !EXPERIMENTAL
   //Second trial
@@ -200,11 +218,16 @@ public class AssignmentGroup {
     //tool pack to easily get work done
     double grade = this.studentWork.get(name).getFullGrade();
 
-    //Percentage feature comes later
+     if(!input.contains("%")) {
+       this.studentWork.get(name).setEarnedGrade(Double.parseDouble(input));
+
+     } else {
+
+       double calc = (Double.parseDouble(input.replace("%", "")))*0.01;
+       this.studentWork.get(name).setEarnedGrade(calc*grade);
+     }
 
       //Changes the grade to whatever grade percentage it is.
-    this.studentWork.get(name).setEarnedGrade(Double.parseDouble(input));
-    System.out.println(this.studentWork.get(name).getEarnedGrade());
 
    }
 

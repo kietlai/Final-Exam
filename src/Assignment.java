@@ -13,7 +13,7 @@
 // [X] Make sure that the data update for the letter grades. 
 
 /**
- * <h1>Assignment Class</h1>
+ * <h1>Assignment Classroom</h1>
  * Used to create assignments for each class and student.
  * @author Quoc-Kiet Lai
  * @since 2024-05-06
@@ -29,7 +29,7 @@ public class Assignment {
 
   // * Constructors
   /**
-   * Constructor for the Assignment Class including everything
+   * Constructor for the Assignment Classroom including everything
    * @param t Title of the assignment
    * @param fG The max amount of points that can be achieved/100% (Without consideration of extra-credit). 
    * @param eG The score that the person earned on the assignment.
@@ -46,7 +46,7 @@ public class Assignment {
   }
 
   /**
-   * Constructor for the Assignment Class, missing earned grade 
+   * Constructor for the Assignment Classroom, missing earned grade
    * @param t Title of the assignment
    * @param fG  The max amount of points that can be achieved/100% (Without consideration of extra-credit).
    */

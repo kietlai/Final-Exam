@@ -11,21 +11,17 @@
 // [] newAssignment
 
 // Imports
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
- * <h1>Class for school Class</h1>
+ * <h1>Classroom for school Classroom</h1>
  * Used to create each class per student
  * @author Quoc-Kiet Lai
  * @since 2024-05-8
  */
 
-public class Class {
+public class Classroom {
   private String teacher;
   private String title;
   private String desc;
@@ -33,18 +29,39 @@ public class Class {
   private ArrayList<AssignmentGroup> assignments;
 
   /**
-   * <h2>Constructor for the "Class" class</h2>
-   * @param titleName Title of the Class
+   * <h2>Constructor for the "Classroom" class</h2>
+   * @param titleName Title of the Classroom
    * @param teacherName name of the teacher
    * @param d Description of the class
    * @param studentNames The list of students within your class put in a string list.
    */
-  public Class(String titleName, String teacherName, String d, String[] studentNames) {
+  public Classroom(String titleName, String teacherName, String d, String[] studentNames) {
     this.title = titleName;
     this.teacher = teacherName;
     this.desc = d;
 
     this.names = new ArrayList<String>(); 
+    this.assignments = new ArrayList<AssignmentGroup>();
+    //Looping to add in the names
+    for (String name: studentNames) {
+      names.add(name);
+    }
+
+  }
+
+  /**
+   * <h2>Constructor for the "Classroom" class (im to lazy to refactor the whole code base so imma add this in.)</h2>
+   * @param titleName Title of the Classroom
+   * @param teacherName name of the teacher
+   * @param d Description of the class
+   * @param studentNames The list of students within your class put in a string list.
+   */
+  public Classroom(String titleName, String teacherName, String d, ArrayList<String> studentNames) {
+    this.title = titleName;
+    this.teacher = teacherName;
+    this.desc = d;
+
+    this.names = new ArrayList<String>();
     this.assignments = new ArrayList<AssignmentGroup>();
     //Looping to add in the names
     for (String name: studentNames) {
@@ -74,6 +91,9 @@ public class Class {
     return this.assignments;
   }
 
+  public void editGrades() {
+    this.getAssignment().editGradeEarnedPoints();
+  }
   public AssignmentGroup getAssignment() {
     int i = 1;
 
@@ -124,7 +144,7 @@ public class Class {
   // ! Setters
 
   /**
-   * Changes the description of the Class
+   * Changes the description of the Classroom
    * @param newDesc the new description
    */
   public void changeDescription(String newDesc) {
@@ -180,7 +200,7 @@ public class Class {
   }
 
   public String toString() {
-    String res = "\nClass Title: " + this.title + "\n   Taught By: " + this.teacher + "\n   Description: " +this.desc + "\n   Students are: ";
+    String res = "\nClassroom Title: " + this.title + "\n   Taught By: " + this.teacher + "\n   Description: " +this.desc + "\n   Students are: ";
 
     for (String student: this.names) {
       res += student + ", ";
