@@ -198,7 +198,7 @@ public class AssignmentGroup {
       //Prints the updated score
       System.out.print(name + " updated score is: " + this.studentWork.get(name).getEarnedGrade() + " out of " +this.studentWork.get(name).getFullGrade());
 
-      System.out.println("|  "+this.studentWork.get(name).getLetterGrade()+" "+this.studentWork.get(name).findPercentage()+"\n");
+      System.out.println("  |  "+this.studentWork.get(name).getLetterGrade()+" "+this.studentWork.get(name).findPercentage()+"\n");
 
     }
     
