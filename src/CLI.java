@@ -11,14 +11,14 @@ import java.util.Random;
 
 /**
  * <h1>CLI Interface Classroom</h1>
- * used to create an cli in the terminal to interact with.
+ * used to create an cli in the terminal to interact with. 
  * @author Quoc-Kiet Lai
  * @since 2024-05-29
  */
 public class CLI {
   private ArrayList<Classroom> user;
   /**
-   * No arguement contructor, is just called once.
+   * No arguement contructor, is just called once. for the demo
    */
   public CLI() {
     user = new ArrayList<Classroom>();
@@ -65,13 +65,28 @@ public class CLI {
 
     this.user.get(0).addStudent(newStudent);
 
+    System.out.println("Lets see what youve done so far!");
+    System.out.println((user.get(0)));
+
+    System.out.println("There are plenty more features to explore but this is a little demo for the app. You can explore the rest of the code base, but I dont want to take up too much of your time.");
+
+    System.out.println("Thank you for your time! Made with \u2764 by Kiet");
+
   }
 
-
+  /**
+   * Used to call the specific class.
+   * @param id the number of that class in the list.
+   */
   public void gradeAssignments(int id) {
     this.user.get(id).editGrades();
   }
 
+  /**
+   * <h1>new Assignment interface</h1>
+   * 
+   * @param id the number of that class in the list.
+   */
   public void newAssignment (int id) {
     Scanner scan  = new Scanner(System.in);
 
@@ -84,6 +99,10 @@ public class CLI {
     user.get(id).newAssignment(name, points);
   }
 
+  /**
+   * Seperates everything so that it can be reused for later purposes. It can run multiples times withing restarting the whole application.
+   * @return returns a classroom to be created
+   */
   public Classroom createClass() {
     Scanner scan = new Scanner(System.in);
 
@@ -117,6 +136,10 @@ public class CLI {
   }
 
 
+  /**
+   * Ask questions until your are finished with all of the students
+   * @return a List of all of the students
+   */
   public ArrayList<String> studentNames() {
     ArrayList<String> studentNames = new ArrayList<>();
     Scanner scan = new Scanner(System.in);
